@@ -14,7 +14,7 @@ async function sortHackerNewsArticles() {
       const rank = row.querySelector('.rank')?.innerText.trim();
       const title = row.querySelector('.titleline a')?.innerText.trim();
       const articleID = row.getAttribute('id');
-      return { rank, title, articleID };
+      return { rank, title, articleID: Number(articleID) };
     });
   });
 
@@ -32,7 +32,7 @@ async function sortHackerNewsArticles() {
   } else {
     console.log("The first 100 articles are NOT sorted from newest to oldest.");
   }
-
+ await browser.close();
 }
 
 (async () => {
