@@ -12,11 +12,7 @@ async function sortHackerNewsArticles() {
   const articles = await page.$$eval('tr.athing', rows => {
     return rows.slice(0, 100).map(row => {
       const articleID = row.getAttribute('id');
-<<<<<<< HEAD
-      return {  articleID };
-=======
-      return { rank, title, articleID: Number(articleID) };
->>>>>>> origin/main
+      return { articleID: Number(articleID) };
     });
   });
 
