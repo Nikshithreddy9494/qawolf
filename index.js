@@ -12,7 +12,11 @@ async function sortHackerNewsArticles() {
   const articles = await page.$$eval('tr.athing', rows => {
     return rows.slice(0, 100).map(row => {
       const articleID = row.getAttribute('id');
+<<<<<<< HEAD
       return {  articleID };
+=======
+      return { rank, title, articleID: Number(articleID) };
+>>>>>>> origin/main
     });
   });
 
@@ -30,7 +34,7 @@ async function sortHackerNewsArticles() {
   } else {
     console.log("The first 100 articles are NOT sorted from newest to oldest.");
   }
-
+ await browser.close();
 }
 
 (async () => {
