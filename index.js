@@ -6,7 +6,7 @@ async function sortHackerNewsArticles() {
   const page = await context.newPage();
 
   // go to Hacker News 'newest' page
-  await page.goto("https://news.ycombinator.com");
+  await page.goto("https://news.ycombinator.com/newest");
 
   // Get the first 100 articles with their timestamps
   const articles = await page.$$eval('tr.athing', rows => {
