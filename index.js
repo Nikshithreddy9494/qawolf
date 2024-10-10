@@ -6,19 +6,17 @@ async function sortHackerNewsArticles() {
   const page = await context.newPage();
 
   // go to Hacker News 'newest' page
-  await page.goto("https://news.ycombinator.com/newest");
+  await page.goto("https://news.ycombinator.com");
 
   // Get the first 100 articles with their timestamps
   const articles = await page.$$eval('tr.athing', rows => {
     return rows.slice(0, 100).map(row => {
-      const rank = row.querySelector('.rank')?.innerText.trim();
-      const title = row.querySelector('.titleline a')?.innerText.trim();
       const articleID = row.getAttribute('id');
-      return { rank, title, articleID };
+      return {  articleID };
     });
   });
 
-  // Extract the IDs and check if they are sorted from newest to oldest
+  // Extract the IDs and check if they are sort7890-2=ed from newest to oldest
   let isSorted = true;
   for (let i = 1; i < articles.length; i++) {
     if (articles[i].articleID >= articles[i - 1].articleID) {
